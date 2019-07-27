@@ -1,11 +1,10 @@
-
-public class Main {
-    public static void main(String[] args) {
-        int[] a = { 9, 9, 9, 9, 9 };
-        System.out.println(climbStairs(5));
-    }
-
-    public static int climbStairs(int n) {
+/*
+ * @lc app=leetcode id=70 lang=java
+ *
+ * [70] Climbing Stairs
+ */
+class Solution {
+    public int climbStairs(int n) {
         if (n == 0) {
             return 0;
         }
