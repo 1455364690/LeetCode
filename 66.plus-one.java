@@ -1,13 +1,10 @@
-
-public class Main {
-    public static void main(String[] args) {
-        int[] a = { 9, 9, 9, 9, 9 };
-        for (int i : plusOne(a)) {
-            System.out.println(i);
-        }
-    }
-
-    public static int[] plusOne(int[] digits) {
+/*
+ * @lc app=leetcode id=66 lang=java
+ *
+ * [66] Plus One
+ */
+class Solution {
+    public int[] plusOne(int[] digits) {
         digits[digits.length - 1] += 1;
         for (int i = digits.length - 1; i > 0; i--) {
             if (digits[i] == 10) {
