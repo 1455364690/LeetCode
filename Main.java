@@ -1,28 +1,37 @@
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = { 9, 9, 9, 9, 9 };
-        System.out.println(climbStairs(5));
+        int[] a = { 1, 2, 4, 5, 6, 0 };
+        int[] b = { 3 };
+        merge(a, 5, b, 1);
     }
 
-    public static int climbStairs(int n) {
-        if (n == 0) {
-            return 0;
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        for (int i = m - 1; i >= 0; i--) {
+            nums1[n + i] = nums1[i];
         }
-        if (n == 1) {
-            return 1;
+        int i = 0;
+        int j = 0;
+        int index = 0;
+        while (i < m && j < n) {
+            if (nums1[n + i] < nums2[j]) {
+                nums1[index] = nums1[n + i];
+                i++;
+            } else {
+                nums1[index] = nums2[j];
+                j++;
+            }
+            index++;
         }
-        if (n == 2) {
-            return 2;
+        if (i >= m) {
+            while (j < n) {
+                nums1[index] = nums2[j];
+                index++;
+                j++;
+            }
         }
-        int n2 = 1;
-        int n1 = 2;
-        int res = 3;
-        for (int i = 3; i <= n; i++) {
-            res = n1 + n2;
-            n2 = n1;
-            n1 = res;
-        }
-        return res;
+        // for (int t : nums1) {
+        // System.out.println(t);
+        // }
     }
 }
