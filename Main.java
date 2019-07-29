@@ -3,35 +3,27 @@ public class Main {
     public static void main(String[] args) {
         int[] a = { 1, 2, 4, 5, 6, 0 };
         int[] b = { 3 };
-        merge(a, 5, b, 1);
+        System.out.println(tribonacci(4));
     }
 
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        for (int i = m - 1; i >= 0; i--) {
-            nums1[n + i] = nums1[i];
+    public static int tribonacci(int n) {
+        if (0 == n) {
+            return 0;
         }
-        int i = 0;
-        int j = 0;
-        int index = 0;
-        while (i < m && j < n) {
-            if (nums1[n + i] < nums2[j]) {
-                nums1[index] = nums1[n + i];
-                i++;
-            } else {
-                nums1[index] = nums2[j];
-                j++;
-            }
-            index++;
+        if (1 == n) {
+            return 1;
         }
-        if (i >= m) {
-            while (j < n) {
-                nums1[index] = nums2[j];
-                index++;
-                j++;
-            }
+        if (2 == n) {
+            return 1;
         }
-        // for (int t : nums1) {
-        // System.out.println(t);
-        // }
+        int p2 = 0;
+        int p1 = 1;
+        int p = 1;
+        for (int i = 3; i <= n; i++) {
+            p += p1 + p2;
+            p1 = p - p1 - p2;
+            p2 = p - p1 - p2;
+        }
+        return p;
     }
 }
